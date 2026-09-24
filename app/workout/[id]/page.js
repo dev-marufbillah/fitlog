@@ -84,7 +84,7 @@ export default function WorkoutDetails() {
       </div>
 
       <div>
-        <h1 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase sm:text-4xl">
+        <h1 className="font-(family-name:--font-oswald) text-3xl font-bold uppercase sm:text-4xl">
           {workout.name}
         </h1>
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-gray-400">
@@ -116,7 +116,7 @@ export default function WorkoutDetails() {
           ))}
         </div>
 
-        <h2 className="mt-8 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-wide">
+        <h2 className="mt-8 font-(family-name:--font-oswald) text-lg font-bold uppercase tracking-wide">
           Instructions
         </h2>
         <ol className="mt-3 space-y-2.5 text-sm text-gray-300">
