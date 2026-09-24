@@ -8,7 +8,7 @@ export default function WorkoutCard({ workout }) {
       href={`/workout/${workout.id}`}
       className="group block overflow-hidden rounded-xl border border-white/5 bg-[#14151a] transition hover:-translate-y-1 hover:border-[#ccff00]/40"
     >
-      <div className="relative aspect-[16/9] w-full overflow-hidden">
+      <div className="relative aspect-video w-full overflow-hidden">
         <Image
           src={workout.image}
           alt={workout.name}
@@ -30,7 +30,7 @@ export default function WorkoutCard({ workout }) {
           ))}
         </div>
 
-        <h3 className="mt-3 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase leading-tight">
+        <h3 className="mt-3 font-(family-name:--font-oswald) text-lg font-bold uppercase leading-tight">
           {workout.name}
         </h3>
         <p className="mt-1 text-xs text-gray-400">{workout.equipment}</p>
