@@ -13,7 +13,7 @@ const sortOptions = [
 function SkeletonCard() {
   return (
     <div className="animate-pulse overflow-hidden rounded-xl border border-white/5 bg-[#14151a]">
-      <div className="aspect-[16/9] w-full bg-white/5" />
+      <div className="aspect-video w-full bg-white/5" />
       <div className="space-y-3 p-4">
         <div className="h-4 w-1/3 rounded-full bg-white/10" />
         <div className="h-5 w-3/4 rounded bg-white/10" />
@@ -60,7 +60,7 @@ export default function Library() {
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase">
+          <h2 className="font-(family-name:--font-oswald) text-3xl font-bold uppercase">
             The Library
           </h2>
           <p className="mt-1 text-sm text-gray-400">
