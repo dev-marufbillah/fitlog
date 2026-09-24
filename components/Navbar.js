@@ -25,7 +25,7 @@ export default function Navbar() {
             priority
             className="h-7 w-7 object-contain"
           />
-          <span className="font-[family-name:var(--font-oswald)] text-lg font-bold tracking-wide">
+          <span className="font-(family-name:--font-oswald) text-lg font-bold tracking-wide">
             FITLOG
           </span>
         </Link>
