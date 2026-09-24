@@ -1,10 +1,11 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { Check, ChevronDown, Clock, Flame, Loader2, Star, X } from "lucide-react";
 import { usePlan } from "../../context/PlanContext";
+import { getAllWorkouts } from "../../lib/api";
 
 const sortOptions = [
   { value: "duration", label: "Duration" },
@@ -91,11 +92,39 @@ export default function MyPlan() {
     usePlan();
   const [tab, setTab] = useState("plan");
   const [sortBy, setSortBy] = useState("duration");
+  const [catalog, setCatalog] = useState(null);
 
-  const totalMinutes = plan.reduce((sum, item) => sum + item.duration, 0);
-  const totalCalories = plan.reduce((sum, item) => sum + item.caloriesBurned, 0);
+  useEffect(() => {
+    let cancelled = false;
+    getAllWorkouts()
+      .then((data) => {
+        if (!cancelled) setCatalog(data);
+      })
+      .catch(() => {
+        if (!cancelled) setCatalog([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  const list = tab === "plan" ? plan : saved;
+  const ready = loaded && catalog !== null;
+
+  const fresh = (item) => {
+    const latest = catalog ? catalog.find((w) => w.id === item.id) : null;
+    return latest ? { ...latest, done: item.done } : item;
+  };
+
+  const planItems = plan.map(fresh);
+  const savedItems = saved.map(fresh);
+
+  const totalMinutes = planItems.reduce((sum, item) => sum + item.duration, 0);
+  const totalCalories = planItems.reduce(
+    (sum, item) => sum + item.caloriesBurned,
+    0
+  );
+
+  const list = tab === "plan" ? planItems : savedItems;
 
   const sorted = useMemo(() => {
     const copy = [...list];
@@ -129,9 +158,9 @@ export default function MyPlan() {
       </p>
 
       <div className="mt-6 grid grid-cols-3 gap-4 rounded-xl border border-white/5 bg-[#14151a] p-5 sm:p-6">
-        <StatCard label="Exercises" value={plan.length} />
-        <StatCard label="Minutes" value={totalMinutes} />
-        <StatCard label="Calories" value={totalCalories} />
+        <StatCard label="Exercises" value={ready ? plan.length : 0} />
+        <StatCard label="Minutes" value={ready ? totalMinutes : 0} />
+        <StatCard label="Calories" value={ready ? totalCalories : 0} />
       </div>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
@@ -164,14 +193,14 @@ export default function MyPlan() {
       </div>
 
       <div className="mt-4 space-y-3">
-        {!loaded && (
+        {!ready && (
           <div className="flex items-center justify-center gap-2 py-16 text-sm text-[#ccff00]">
             <Loader2 className="h-5 w-5 animate-spin" />
             Loading workouts…
           </div>
         )}
 
-        {loaded && sorted.length === 0 && (
+        {ready && sorted.length === 0 && (
           <div className="flex flex-col items-center rounded-xl border border-dashed border-white/10 px-4 py-16 text-center">
             <h2 className="font-[family-name:var(--font-oswald)] text-xl font-bold uppercase">
               Nothing here yet
@@ -188,7 +217,7 @@ export default function MyPlan() {
           </div>
         )}
 
-        {loaded &&
+        {ready &&
           sorted.map((workout) => (
             <WorkoutRow
               key={workout.id}
