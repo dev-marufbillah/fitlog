@@ -13,7 +13,7 @@ export default function Hero() {
             Workout Library
           </p>
 
-          <h1 className="mt-4 font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-[1.05] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 font-(family-name:--font-oswald) text-4xl font-bold uppercase leading-[1.05] sm:text-5xl lg:text-6xl">
             Train with intent. Log every set.
           </h1>
 
@@ -35,7 +35,7 @@ export default function Hero() {
             width={520}
             height={520}
             priority
-            className="h-auto w-full max-w-[280px] object-contain sm:max-w-[360px] md:max-w-[420px]"
+            className="h-auto w-full max-w-70 object-contain sm:max-w-90 md:max-w-105"
           />
         </div>
       </div>
