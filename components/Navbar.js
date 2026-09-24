@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Dumbbell } from "lucide-react";
 import { usePlan } from "../context/PlanContext";
 
 export default function Navbar() {
@@ -16,15 +16,20 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0a0a]/95 backdrop-blur">
       <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Dumbbell className="h-6 w-6 text-[#ccff00]" />
+          <Image
+            src="/logo.png"
+            alt="FitLog logo"
+            width={28}
+            height={28}
+            priority
+            className="h-7 w-7 object-contain"
+          />
           <span className="font-[family-name:var(--font-oswald)] text-lg font-bold tracking-wide">
             FITLOG
           </span>
         </Link>
 
-        {/* Middle links */}
         <div className="flex items-center gap-1">
           {links.map((link) => {
             const active = pathname === link.href;
@@ -44,7 +49,6 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right badges */}
         <div className="flex items-center gap-3 text-sm">
           <Link
             href="/my-plan"

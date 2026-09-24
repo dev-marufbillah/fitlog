@@ -19,6 +19,7 @@ const inter = Inter({
 export const metadata = {
   title: "FitLog — Workout Library",
   description: "Train with intent. Log every set.",
+  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
