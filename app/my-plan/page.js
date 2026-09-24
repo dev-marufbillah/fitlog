@@ -17,7 +17,7 @@ function StatCard({ label, value }) {
   return (
     <div>
       <p className="text-xs text-gray-400">{label}</p>
-      <p className="mt-1 font-[family-name:var(--font-oswald)] text-3xl font-bold text-white first:text-[#ccff00]">
+      <p className="mt-1 font-(family-name:--font-oswald) text-3xl font-bold text-white first:text-[#ccff00]">
         {value}
       </p>
     </div>
@@ -38,7 +38,7 @@ function WorkoutRow({ workout, showDone, onDone, onRemove }) {
       </div>
 
       <div className="min-w-0 flex-1">
-        <h3 className="font-[family-name:var(--font-oswald)] text-base font-bold uppercase">
+        <h3 className="font-(family-name:--font-oswald) text-base font-bold uppercase">
           {workout.name}
         </h3>
         <p className="mt-0.5 text-xs text-gray-400">{workout.equipment}</p>
@@ -150,7 +150,7 @@ export default function MyPlan() {
 
   return (
     <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
-      <h1 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase">
+      <h1 className="font-(family-name:--font-oswald) text-3xl font-bold uppercase">
         My Plan
       </h1>
       <p className="mt-1 text-sm text-gray-400">
@@ -202,7 +202,7 @@ export default function MyPlan() {
 
         {ready && sorted.length === 0 && (
           <div className="flex flex-col items-center rounded-xl border border-dashed border-white/10 px-4 py-16 text-center">
-            <h2 className="font-[family-name:var(--font-oswald)] text-xl font-bold uppercase">
+            <h2 className="font-(family-name:--font-oswald) text-xl font-bold uppercase">
               Nothing here yet
             </h2>
             <p className="mt-2 text-sm text-gray-400">
