@@ -13,7 +13,7 @@ export default function Footer() {
             height={22}
             className="h-5 w-5 object-contain"
           />
-          <span className="font-[family-name:var(--font-oswald)] text-base font-bold tracking-wide">
+          <span className="font-(family-name:--font-oswald) text-base font-bold tracking-wide">
             FITLOG
           </span>
         </Link>
