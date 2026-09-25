@@ -80,7 +80,7 @@ fitlog/
 
 ## 👤 Author
 
-**Maruf Salauddin**
+**Maruf Billah**
 GitHub: [@dev-marufbillah](https://github.com/dev-marufbillah)
 
 ---
